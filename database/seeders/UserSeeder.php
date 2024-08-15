@@ -56,13 +56,6 @@ class UserSeeder extends Seeder
         // add role
         $roles = [
             'admin',
-            'manager',
-            'mekanik',
-            'marketing',
-            'adminpool',
-            'driver',
-            'finance',
-            'bengkel',
         ];
 
         foreach ($roles as $role) {

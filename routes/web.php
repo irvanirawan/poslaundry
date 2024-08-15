@@ -7,7 +7,7 @@ Route::get('/', function () {
     if (!auth()->check()) {
         return redirect('/login');
     }
-    return view('welcome');
+    return view('pages.dashboard');
 })->middleware('auth');
 
 // login

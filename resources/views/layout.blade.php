@@ -29,19 +29,30 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<!-- FAVICONS ICON -->
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('mophy/assets/images/favicon.png')}}" />
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png')}}" />
 
 		<!-- ICONS -->
-		<link rel="stylesheet" href="{{ asset('mophy/assets/icons/fontawesome/css/all.min.css')}}" />
-		<link rel="stylesheet" href="{{ asset('mophy/assets/icons/line-awesome/css/line-awesome.min.css')}}" />
-		<link rel="stylesheet" href="{{ asset('mophy/assets/icons/flaticon/flaticon.css')}}" />
-		<link rel="stylesheet" href="{{ asset('mophy/assets/icons/themify-icons/css/themify-icons.css')}}" />
+		<link rel="stylesheet" href="{{ asset('assets/icons/fontawesome/css/all.min.css')}}" />
+		<link rel="stylesheet" href="{{ asset('assets/icons/line-awesome/css/line-awesome.min.css')}}" />
+		<link rel="stylesheet" href="{{ asset('assets/icons/flaticon/flaticon.css')}}" />
+		<link rel="stylesheet" href="{{ asset('assets/icons/themify-icons/css/themify-icons.css')}}" />
 
 		<!-- NICE SELECT -->
-		<link href="{{ asset('mophy/assets/vendor/niceselect/css/nice-select.css')}}" rel="stylesheet" />
+		<link href="{{ asset('assets/vendor/niceselect/css/nice-select.css')}}" rel="stylesheet" />
 
-		<!-- STYLE CSS -->
-		<link href="{{ asset('mophy/assets/css/style.css')}}" rel="stylesheet" />
+		<!-- STYLE CSS. -->
+		<link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/vendor/datatables/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="{{ asset('fontawesome-6.5.2/css/all.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/icons/line-awesome/css/line-awesome.min.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/icons/flaticon/flaticon.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/icons/themify-icons/css/themify-icons.css') }}">
+		<link rel="stylesheet" href="{{ asset('assets/vendor/select2/css/select2.min.css') }}">
+		<!-- NICE SELECT -->
+		<link href="{{ asset('assets/vendor/niceselect/css/nice-select.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/vendor/jquery-ascolorpicker/css/ascolorpicker.min.css') }}" rel="stylesheet">		
+		@vite('resources/css/app.css')
+		<link href="{{ asset('assets/css/style.css')}}" rel="stylesheet" />
         <style>
             .nav-text {
                 max-width: 150px; /* Atur lebar maksimum sesuai kebutuhan */
@@ -51,7 +62,7 @@
                 font-size: 12px;
             }
         </style>
-        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+		@stack('styles')
 	</head>
 	<body class="selection:text-white selection:bg-primary">
 		<!-- Preloader start  -->
@@ -150,19 +161,19 @@
 			<div class="deznav">
 				<div class="deznav-scroll">
 					<ul class="metismenu" id="menu">
-                        <li class="mm-active">
-                            <a class="ai-icon" href="javascript:void(0)">
-                                <i class="flaticon-381-television mr-0"></i>
-                                <span class="nav-text">Dashboard</span>
-                            </a>
-                        </li>
+						<li>
+							<a class="ai-icon" href="/" aria-expanded="false">
+								<i class="fas fa-tachometer-alt"></i>
+								<span class="nav-text">Dashboard</span>
+							</a>
+						</li>
                         <li>
                             <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
                                 <i class="flaticon-381-network mr-0"></i>
                                 <span class="nav-text">Mater</span>
                             </a>
                             <ul aria-expanded="false">
-                                <li><a href="#">Pelanggan</a></li>
+                                <li><a href="pelanggan">Pelanggan</a></li>
                                 <li><a href="#">Kelompok Menu</a></li>
                                 <li><a href="#">Kategori Menu</a></li>
                                 <li><a href="#">Menu</a></li>
@@ -225,6 +236,7 @@
 			<!-- Content body start -->
 			<div class="content-body" style="min-height: 1040px;">
 				<div class="container-fluid">
+					@stack("breadcumb")
                     @yield('content')
                 </div>
 			</div>
@@ -241,16 +253,52 @@
 			</div>
 		</div>
 
-		<script src="{{ asset('mophy/assets/vendor/global/global.min.js')}}"></script>
+		<script src="{{ asset('assets/vendor/global/global.min.js')}}"></script>
 		<!-- Alpine js -->
-		<script defer src="{{ asset('mophy/assets/vendor/alpine/alpineplugin.js')}}"></script>
-		<script defer src="{{ asset('mophy/assets/vendor/alpine/alpine.js')}}"></script>
-		<script src="{{ asset('mophy/assets/vendor/niceselect/js/jquery.nice-select.min.js')}}"></script>
+		<script defer src="{{ asset('assets/vendor/alpine/alpineplugin.js')}}"></script>
+		<script defer src="{{ asset('assets/vendor/alpine/alpine.js')}}"></script>
+		<script src="{{ asset('assets/vendor/niceselect/js/jquery.nice-select.min.js')}}"></script>
 		<!-- nice-select -->
-		<script src="{{ asset('mophy/assets/js/deznav-init.js')}}"></script>
-		<script src="{{ asset('mophy/assets/js/custom.js')}}"></script>
-		<script src="{{ asset('mophy/assets/js/styleSwitcher.js')}}"></script>
-		<script src="{{ asset('mophy/assets/js/demo.js')}}"></script>
+		<script src="{{ asset('assets/js/deznav-init.js')}}"></script>
+		<script src="{{ asset('assets/js/custom.js')}}"></script>
+		<script src="{{ asset('assets/js/styleSwitcher.js')}}"></script>
+		<script src="{{ asset('assets/js/demo.js')}}"></script>
+		<!-- Toastr -->
+		<script src="{{asset('assets/vendor/toastr/js/toastr.min.js')}}"></script>
+
+		<!-- All init script -->
+		<script src="{{asset('assets/js/plugins-init/toastr-init.js')}}"></script>    
+		<script src="{{asset('assets/vendor/sweetalert2/sweetalert2.min.js')}}"></script>
+		<script src="{{asset('assets/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
+		<script src="{{asset('assets/vendor/datatables/responsive/responsive.js')}}"></script>
+		<script src="{{asset('assets/js/plugins-init/datatables.init.js')}}"></script>
+		<script>
+			document.addEventListener('alpine:init', () => {
+            Alpine.store('common', {
+                loadings: [],
+                datas: [],
+                loading: false,
+                activeTab: 'tab-table',
+                toastVisible: false,
+                toastType: 'info',
+                toastMessage: '-',
+                toastShow(type, message) {
+                    this.toastVisible = true;
+                    this.toastMessage = message;
+                    this.toastType = type;
+                    setTimeout(() => {
+                        this.toastVisible = false;
+                    }, 5000);
+                },
+                reloadComponent(id) {
+                    const component = document.getElementById(id);
+                    if (component) {
+                        component.dispatchEvent(new CustomEvent('reload-component', { bubbles: true }));
+                    }
+                },
+            });
+        });
+		</script>
         @stack('scripts')
 	</body>
 </html>

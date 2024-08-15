@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/pelanggan",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Pelanggan\\": "app/",
+            "Modules\\Pelanggan\\Database\\Factories\\": "database/factories/",
+            "Modules\\Pelanggan\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Pelanggan\\Tests\\": "tests/"
+        }
+    }
+}

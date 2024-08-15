@@ -26,5 +26,6 @@
     "Signal": true,
     "Bengkel": true,
     "ManagerTruck": true,
-    "UserManagement": true
+    "UserManagement": true,
+    "Pelanggan": true
 }
