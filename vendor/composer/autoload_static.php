@@ -125,6 +125,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
             'Modules\\Pelanggan\\Database\\Seeders\\' => 35,
             'Modules\\Pelanggan\\Database\\Factories\\' => 37,
             'Modules\\Pelanggan\\' => 18,
+            'Modules\\CategoryGroup\\Tests\\' => 28,
+            'Modules\\CategoryGroup\\Database\\Seeders\\' => 39,
+            'Modules\\CategoryGroup\\Database\\Factories\\' => 41,
+            'Modules\\CategoryGroup\\' => 22,
             'Mockery\\' => 8,
         ),
         'L' => 
@@ -427,6 +431,22 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\Pelanggan\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Modules/Pelanggan/app',
+        ),
+        'Modules\\CategoryGroup\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/CategoryGroup/tests',
+        ),
+        'Modules\\CategoryGroup\\Database\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/CategoryGroup/database/seeders',
+        ),
+        'Modules\\CategoryGroup\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/CategoryGroup/database/factories',
+        ),
+        'Modules\\CategoryGroup\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/CategoryGroup/app',
         ),
         'Mockery\\' => 
         array (
@@ -3506,6 +3526,13 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Mockery\\Undefined' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Undefined.php',
         'Mockery\\VerificationDirector' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/VerificationDirector.php',
         'Mockery\\VerificationExpectation' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/VerificationExpectation.php',
+        'Modules\\CategoryGroup\\Database\\Seeders\\CategoryGroupDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/CategoryGroup/database/seeders/CategoryGroupDatabaseSeeder.php',
+        'Modules\\CategoryGroup\\Http\\Controllers\\ApiCategoryGroupController' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Http/Controllers/ApiCategoryGroupController.php',
+        'Modules\\CategoryGroup\\Http\\Controllers\\CategoryGroupController' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Http/Controllers/CategoryGroupController.php',
+        'Modules\\CategoryGroup\\Models\\CategoryGroup' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Models/CategoryGroup.php',
+        'Modules\\CategoryGroup\\Providers\\CategoryGroupServiceProvider' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Providers/CategoryGroupServiceProvider.php',
+        'Modules\\CategoryGroup\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Providers/EventServiceProvider.php',
+        'Modules\\CategoryGroup\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Providers/RouteServiceProvider.php',
         'Modules\\Pelanggan\\Database\\Seeders\\PelangganDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Pelanggan/database/seeders/PelangganDatabaseSeeder.php',
         'Modules\\Pelanggan\\Http\\Controllers\\ApiPelangganController' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Http/Controllers/ApiPelangganController.php',
         'Modules\\Pelanggan\\Http\\Controllers\\PelangganController' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Http/Controllers/PelangganController.php',

@@ -27,5 +27,6 @@
     "Bengkel": true,
     "ManagerTruck": true,
     "UserManagement": true,
-    "Pelanggan": true
+    "Pelanggan": true,
+    "CategoryGroup": true
 }

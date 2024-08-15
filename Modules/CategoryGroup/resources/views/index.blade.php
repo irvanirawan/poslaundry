@@ -5,12 +5,12 @@
 @endpush
 
 @push('header-title')
-    Order
+    Kelompok Kategori
 @endpush
 
 @push('breadcumb')
 <div class="form-head mb-6">
-    <h3 class="text-dark font-semibold mb-0">Pelanggan</h3>
+    <h3 class="text-dark font-semibold mb-0">Kelompok Kategori</h3>
 </div>
 @endpush
 
@@ -25,14 +25,14 @@
                         <a href="javascript:void(0);" class="nav-link py-2 px-4 font-medium block border-b-[3px] border-transparent text-primary"
                             @click.prevent="$store.common.activeTab = 'tab-table'"
                             :class="{ 'border-b-primary': $store.common.activeTab == 'tab-table'}">
-                            <i class="la la-table mr-2"></i> Data Pelanggan
+                            <i class="la la-table mr-2"></i> Data Kelompok Kategori
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:void(0);" class="nav-link py-2 px-4 font-medium block border-b-[3px] border-transparent text-primary"
                             @click.prevent="$store.common.activeTab = 'tab-form'"
                             :class="{ 'border-b-primary': $store.common.activeTab == 'tab-form'}">
-                            <i class="la la-plus-circle mr-2"></i> Tambah Pelanggan
+                            <i class="la la-plus-circle mr-2"></i> Tambah Kelompok Kategori
                         </a>
                     </li>
                     <li class="nav-item ml-auto">
@@ -64,7 +64,10 @@
                     </li>
                 </ul>
                 <div class="tab-content-area">
-                    <div x-show="$store.common.activeTab == 'tab-table'" x-transition>
+                    <div x-show="$store.common.activeTab == 'tab-table'"
+                        x-transition:enter="transition-all duration-700 easy-in-out"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100">
                         <div class="pt-6 relative">
                             <div id="loadingtable" class="flex justify-center items-center absolute inset-0 bg-opacity-50 z-50 hidden">
                                 <div class="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-blue-500"></div>
@@ -73,10 +76,8 @@
                                 <thead>
                                     <tr>
                                         <th><i class="fas fa-cog"></i></th>
-                                        <th>Kode Pelanggan</th>
-                                        <th>Nama Pelanggan</th>
-                                        <th>Alamat</th>
-                                        <th>Telepon</th>
+                                        <th>Kode</th>
+                                        <th>Nama</th>
                                         <th>Status</th>
                                         <th>Operator</th>
                                     </tr>
@@ -85,23 +86,18 @@
                             </table>
                         </div>
                     </div>
-                    <div x-show="$store.common.activeTab == 'tab-form'" x-transition>
+                    <div x-show="$store.common.activeTab == 'tab-form'"
+                        x-transition:enter="transition-all duration-700 easy-in-out"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100">
                         <form class="p-6" @submit.prevent="saveSubmitPrevent">
                             <div class="mb-4">
-                                <label for="kode" class="block text-gray-700 text-sm font-bold mb-2">Kode Pelanggan:</label>
-                                <input type="text" x-model="kode" class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" placeholder="Enter Kode Pelanggan" required>
+                                <label for="kode" class="block text-gray-700 text-sm font-bold mb-2">Kode:</label>
+                                <input type="text" x-model="kode" class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" placeholder="Enter Kode " required>
                             </div>
                             <div class="mb-4">
-                                <label for="nama" class="block text-gray-700 text-sm font-bold mb-2">Nama Pelanggan:</label>
-                                <input type="text" x-model="nama" class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" placeholder="Enter Nama Pelanggan" >
-                            </div>
-                            <div class="mb-4">
-                                <label for="alamat" class="block text-gray-700 text-sm font-bold mb-2">Alamat:</label>
-                                <input type="text" x-model="alamat" class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" placeholder="Enter Alamat" >
-                            </div>
-                            <div class="mb-4">
-                                <label for="telepon" class="block text-gray-700 text-sm font-bold mb-2">Telepon:</label>
-                                <input type="text" x-model="telepon" class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" placeholder="Enter Telepon" >
+                                <label for="nama" class="block text-gray-700 text-sm font-bold mb-2">Nama:</label>
+                                <input type="text" x-model="nama" class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" placeholder="Enter Nama " >
                             </div>
                             <div class="mb-4">
                                 <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status:</label>
@@ -133,7 +129,7 @@
     const primaryTable = $('#primaryTable').DataTable({
         responsive: true,
         "ajax": {
-            "url": "/api/pelanggan",
+            "url": "/api/categorygroup",
             "type": "GET",
             "error": function(xhr) {
                 const message = xhr.responseJSON.message || 'Data gagal dimuat';
@@ -166,8 +162,6 @@
             },
             { data: 'kode' },
             { data: 'nama' },
-            { data: 'alamat' },
-            { data: 'telepon' },
             { data: 'status' },
             { data: 'created_by_user',
                 render: function(data, type, row) {
@@ -182,12 +176,10 @@
             id: '',
             kode: '',
             nama: '',
-            alamat: '',
-            telepon: '',
             status: 'aktif',
             saving: false,
             deleting: false,
-            columns: ['Action', 'Kode Pelanggan', 'Nama Pelanggan', 'Alamat', 'Telepon', 'Status', 'Operator'],
+            columns: ['Action', 'Kode', 'Nama', 'Status', 'Operator'],
             toggleColumn(column) {
                 primaryTable.column(column).visible(!primaryTable.column(column).visible());
             },
@@ -196,12 +188,10 @@
                 $('#loadingtable').removeClass('hidden');
                 this.saving = true;
                 const method = this.id ? 'PUT' : 'POST';
-                const url = this.id ? '/api/pelanggan/' + this.id : '/api/pelanggan';
+                const url = this.id ? '/api/categorygroup/' + this.id : '/api/categorygroup';
                 const data = {
                     kode: this.kode,
                     nama: this.nama,
-                    alamat: this.alamat,
-                    telepon: this.telepon,
                     status: this.status
                 };
                 console.log(data);
@@ -235,8 +225,6 @@
                 this.id = item.id;
                 this.kode = item.kode;
                 this.nama = item.nama;
-                this.alamat = item.alamat;
-                this.telepon = item.telepon;
                 this.status = item.status;
                 Alpine.store('common').activeTab = 'tab-form';
             },
@@ -245,7 +233,7 @@
                 if (confirm('Anda yakin ingin menghapus ' + item.kode + '?')) {
                     $('#primaryTable').addClass('opacity-50 cursor-not-allowed');
                     this.deleting = true;
-                    const url = '/api/pelanggan/' + id;
+                    const url = '/api/categorygroup/' + id;
                     fetch(url, {
                         method: 'DELETE'
                     })
@@ -269,8 +257,6 @@
                 this.id = '';
                 this.kode = '';
                 this.nama = '';
-                this.alamat = '';
-                this.telepon = '';
                 this.status = '';
                 Alpine.store('common').activeTab = 'tab-table';
             }

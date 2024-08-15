@@ -174,7 +174,7 @@
                             </a>
                             <ul aria-expanded="false">
                                 <li><a href="pelanggan">Pelanggan</a></li>
-                                <li><a href="#">Kelompok Menu</a></li>
+                                <li><a href="categorygroup">Kelompok Menu</a></li>
                                 <li><a href="#">Kategori Menu</a></li>
                                 <li><a href="#">Menu</a></li>
                             </ul>
