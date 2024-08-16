@@ -176,7 +176,7 @@
                                 <li><a href="pelanggan">Pelanggan</a></li>
                                 <li><a href="categorygroup">Kelompok Menu</a></li>
                                 <li><a href="category">Kategori Menu</a></li>
-                                <li><a href="#">Menu</a></li>
+                                <li><a href="items">Menu</a></li>
                             </ul>
                         </li>
 						<li>

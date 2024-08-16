@@ -39,9 +39,11 @@ return new class extends Migration
     public function upSeeder(): void
     {
         $data = [
-            ['kode' => 'C001', 'nama' => 'Category 1', 'status' => 'aktif'],
-            ['kode' => 'C002', 'nama' => 'Category 2', 'status' => 'aktif'],
-            ['kode' => 'C003', 'nama' => 'Category 3', 'status' => 'aktif'],
+            ['kode' => 'C001', 'nama' => 'Category 1', 'status' => 'aktif', 'category_group_id' => 1],
+            ['kode' => 'C002', 'nama' => 'Category 2', 'status' => 'aktif', 'category_group_id' => 1],
+            ['kode' => 'C003', 'nama' => 'Category 3', 'status' => 'aktif', 'category_group_id' => 2],
+            ['kode' => 'C004', 'nama' => 'Category 4', 'status' => 'aktif', 'category_group_id' => 2],
+            ['kode' => 'C005', 'nama' => 'Category 5', 'status' => 'aktif', 'category_group_id' => 1],
         ];
         DB::table('category')->insert($data);
     }

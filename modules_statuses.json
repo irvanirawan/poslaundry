@@ -29,5 +29,6 @@
     "UserManagement": true,
     "Pelanggan": true,
     "CategoryGroup": true,
-    "Category": true
+    "Category": true,
+    "Items": true
 }

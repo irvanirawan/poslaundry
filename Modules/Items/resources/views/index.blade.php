@@ -5,12 +5,12 @@
 @endpush
 
 @push('header-title')
-    Kategori
+    Jasa
 @endpush
 
 @push('breadcumb')
 <div class="form-head mb-6">
-    <h3 class="text-dark font-semibold mb-0">Kategori</h3>
+    <h3 class="text-dark font-semibold mb-0">Jasa</h3>
 </div>
 @endpush
 
@@ -25,14 +25,14 @@
                         <a href="javascript:void(0);" class="nav-link py-2 px-4 font-medium block border-b-[3px] border-transparent text-primary"
                             @click.prevent="$store.common.activeTab = 'tab-table'"
                             :class="{ 'border-b-primary': $store.common.activeTab == 'tab-table'}">
-                            <i class="la la-table mr-2"></i> Data Kategori
+                            <i class="la la-table mr-2"></i> Data Jasa
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:void(0);" class="nav-link py-2 px-4 font-medium block border-b-[3px] border-transparent text-primary"
                             @click.prevent="$store.common.activeTab = 'tab-form'"
                             :class="{ 'border-b-primary': $store.common.activeTab == 'tab-form'}">
-                            <i class="la la-plus-circle mr-2"></i> Tambah Kategori
+                            <i class="la la-plus-circle mr-2"></i> Tambah Jasa
                         </a>
                     </li>
                     <li class="nav-item ml-auto">
@@ -76,10 +76,13 @@
                                 <thead>
                                     <tr>
                                         <th><i class="fas fa-cog"></i></th>
+                                        <th>Status</th>
                                         <th>Kode</th>
                                         <th>Nama</th>
-                                        <th>Status</th>
                                         <th>Kelompok</th>
+                                        <th>Kategori</th>
+                                        <th>Satuan</th>
+                                        <th>Harga</th>
                                         <th>Operator</th>
                                     </tr>
                                 </thead>
@@ -107,14 +110,52 @@
                                     <option value="nonaktif">Tidak Aktif</option>
                                 </select>
                             </div>
+                            <!-- kategori -->
                             <div class="mb-4">
-                                <label for="kelompok" class="block text-gray-700 text-sm font-bold mb-2">Kelompok:</label>
-                                <select x-model="kelompok" class="form-select text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" required>
-                                    <option value="">Pilih Kelompok</option>
-                                    <template x-for="item in datakelompok" :key="item.id">
+                                <label for="kategori" class="block text-gray-700 text-sm font-bold mb-2">Kategori:</label>
+                                <select x-model="kategori" class="form-select text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" required>
+                                    <option value="">Pilih Kategori</option>
+                                    <template x-for="item in datakategori" :key="item.id">
                                         <option x-bind:value="item.id" x-text="item.kode + ' - ' + item.nama"></option>
                                     </template>
                                 </select>
+                            </div>
+                            <!-- harga -->
+                            <div class="mb-4">
+                                <label for="harga" class="block text-gray-700 text-sm font-bold mb-2">Harga:</label>
+                                <input type="text" x-model="harga" @input="formatNumber($event)" class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full" placeholder="Enter Harga " >
+                            </div>
+                            <!-- satuan -->
+                            <div class="mb-4">
+                                <label for="satuan" class="block text-gray-700 text-sm font-bold mb-2">Satuan:</label>
+                                <div>
+                                    <input type="text" 
+                                        class="form-control text-[13px] h-[2.813rem] border border-border block rounded-lg py-1.5 px-3 w-full"
+                                        placeholder="satuan"
+                                        x-model="satuan"
+                                        @input="filterSugesti"
+                                        @keydown.arrow-down.prevent="highlightNext()"
+                                        @keydown.arrow-up.prevent="highlightPrevious()"
+                                        @keydown.enter.prevent="selectSugesti()">
+                                    
+                                    <ul x-show="filteredSugesti.length > 0" 
+                                        class="absolute z-10 mt-1 bg-gray-100 border border-gray-200 rounded-md shadow-sm"
+                                        @click.outside="filteredSugesti = []">
+                                        <template x-for="(item, index) in filteredSugesti" :key="item.id">
+                                            <li 
+                                                :class="{
+                                                    'bg-gray-200': index === highlightedIndex,
+                                                    'cursor-pointer': true,
+                                                    'text-gray-500': true
+                                                }"
+                                                @click="selectSugesti(item)"
+                                                @mouseenter="highlightedIndex = index"
+                                                class="px-4 py-1">
+                                                <span x-text="item.nama"></span>
+                                            </li>
+                                        </template>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="flex items-center justify-between">
                                 <button type="submit" class="mr-1 mb-2 min-w-[6.875rem] inline-block rounded-lg max-sm:text-sm px-4 sm:px-[0.938rem] py-2.5 border border-primary text-white bg-primary hover:bg-hover-primary hover:border-hover-primary duration-300" :class="{ 'opacity-50 cursor-not-allowed': saving }" :disabled="saving">
@@ -139,10 +180,11 @@
     const primaryTable = $('#primaryTable').DataTable({
         responsive: true,
         "ajax": {
-            "url": "/api/category",
+            "url": "/api/items",
             "type": "GET",
             "error": function(xhr) {
-                const message = xhr.responseJSON.message || 'Data gagal dimuat';
+                console.log(xhr);                
+                const message = xhr.responseJSON ? xhr.responseJSON.message : 'Terjadi kesalahan saat mengambil data';
                 alert(message);
             },
             "complete": function() {
@@ -170,9 +212,9 @@
                     `;
                 }
             },
+            { data: 'status' },
             { data: 'kode' },
             { data: 'nama' },
-            { data: 'status' },
             { data: 'category_group',
                 render: function(data, type, row) {
                     const kode = row.category_group ? row.category_group.kode : '';
@@ -180,6 +222,16 @@
                     return `${kode} - ${name}`;
                 }
             },
+            {
+                data: 'category',
+                render: function(data, type, row) {
+                    const kode = row.category ? row.category.kode : '';
+                    const name = row.category ? row.category.nama : '';
+                    return `${kode} - ${name}`;
+                }
+            },
+            { data: 'satuan' },
+            { data: 'hargajual' },
             { data: 'created_by_user',
                 render: function(data, type, row) {
                     const name = row.created_by_user ? row.created_by_user.name : '-';
@@ -194,12 +246,16 @@
             kode: '',
             nama: '',
             status: 'aktif',
-            kelompok: '',
-            datakelompok: @json($categoryGroup),
+            kategori: '',
+            harga: '',
+            satuan: '',
+            datakategori: @json($category),
             saving: false,
             deleting: false,
-            columns: ['Action', 'Kode', 'Nama', 'Status', 'Kelompok', 'Operator'],
-
+            columns: ['Action', 'Kode', 'Nama', 'Harga', 'Satuan', 'Status', 'Kelompok', 'Kategori', 'Operator'],
+            sugesti: @json($unit),
+            filteredSugesti: [],
+            highlightedIndex: -1,
             toggleColumn(column) {
                 primaryTable.column(column).visible(!primaryTable.column(column).visible());
             },
@@ -208,12 +264,14 @@
                 this.saving = true;
                 this.setLoadingState(true);
                 const method = this.id ? 'PUT' : 'POST';
-                const url = this.id ? `/api/category/${this.id}` : '/api/category';
+                const url = this.id ? `/api/items/${this.id}` : '/api/items';
                 const data = {
                     kode: this.kode,
                     nama: this.nama,
                     status: this.status,
-                    category_group_id: this.kelompok
+                    kategori_id: this.kategori,
+                    satuan: this.satuan,
+                    hargajual: parseInt(this.harga)
                 };
 
                 this.sendRequest(url, method, data)
@@ -226,15 +284,17 @@
             },
 
             editItem(id) {
-                const item = dataPrimary.find(item => item.id === id);
+                const item = dataPrimary.find(item => item.id === id);                
                 if (item) {
                     this.id = item.id;
                     this.kode = item.kode;
                     this.nama = item.nama;
                     this.status = item.status;
-                    this.kelompok = item.category_group_id;
+                    this.kategori = item.kategori_id;
+                    this.harga = item.hargajual;
+                    this.satuan = item.satuan;
                     Alpine.store('common').activeTab = 'tab-form';
-                }
+                }           
             },
 
             async deleteItem(id) {
@@ -242,7 +302,7 @@
                 if (item && confirm(`Anda yakin ingin menghapus ${item.kode}?`)) {
                     this.deleting = true;
                     this.setLoadingState(true);
-                    const url = `/api/category/${id}`;
+                    const url = `/api/items/${id}`;
                     
                     this.sendRequest(url, 'DELETE')
                         .then(response => this.handleResponse(response, 'Data berhasil dihapus'))
@@ -256,7 +316,9 @@
                 this.kode = '';
                 this.nama = '';
                 this.status = 'aktif';
-                this.kelompok = '';
+                this.kategori = '';
+                this.harga = '';
+                this.satuan = '';
                 Alpine.store('common').activeTab = 'tab-table';
             },
 
@@ -284,6 +346,44 @@
                 const typeToast = isError ? 'error' : (response.ok ? 'success' : 'warning');
                 Alpine.store('common').toastShow(typeToast, message);
                 primaryTable.ajax.reload();
+            },
+            
+            formatNumber(event) {
+                const value = event.target.value.replace(/\D/g, '');
+                event.target.value = new Intl.NumberFormat().format(value);
+            },
+
+            filterSugesti() {
+                if (this.satuan.length > 0) {
+                    this.filteredSugesti = this.sugesti.filter(item => 
+                        item.nama.toLowerCase().includes(this.satuan.toLowerCase())
+                    );
+                } else {
+                    this.filteredSugesti = [];
+                }
+                this.highlightedIndex = -1; // Reset highlighted index
+            },
+    
+            highlightNext() {
+                if (this.highlightedIndex < this.filteredSugesti.length - 1) {
+                    this.highlightedIndex++;
+                }
+            },
+    
+            highlightPrevious() {
+                if (this.highlightedIndex > 0) {
+                    this.highlightedIndex--;
+                }
+            },
+    
+            selectSugesti(item = null) {
+                if (item) {
+                    this.satuan = item.nama;
+                } else if (this.highlightedIndex >= 0) {
+                    this.satuan = this.filteredSugesti[this.highlightedIndex].nama;
+                }
+                this.filteredSugesti = [];
+                this.highlightedIndex = -1;
             }
         }));
     });

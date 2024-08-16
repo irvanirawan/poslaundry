@@ -147,8 +147,8 @@
 @endsection
 
 @push('scripts')
-<script src="{{ asset('mophy/assets/vendor/chart-js/chart.bundle.min.js')}}"></script>
-<script src="{{ asset('mophy/assets/js/plugins-init/chartjs-init.js')}}"></script>
+<script src="{{ asset('assets/vendor/chart-js/chart.bundle.min.js')}}"></script>
+<script src="{{ asset('assets/js/plugins-init/chartjs-init.js')}}"></script>
 <script>
     function liveClock() {
         return {

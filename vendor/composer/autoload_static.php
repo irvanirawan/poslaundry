@@ -125,6 +125,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
             'Modules\\Pelanggan\\Database\\Seeders\\' => 35,
             'Modules\\Pelanggan\\Database\\Factories\\' => 37,
             'Modules\\Pelanggan\\' => 18,
+            'Modules\\Items\\Tests\\' => 20,
+            'Modules\\Items\\Database\\Seeders\\' => 31,
+            'Modules\\Items\\Database\\Factories\\' => 33,
+            'Modules\\Items\\' => 14,
             'Modules\\Category\\Tests\\' => 23,
             'Modules\\Category\\Database\\Seeders\\' => 34,
             'Modules\\Category\\Database\\Factories\\' => 36,
@@ -435,6 +439,22 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\Pelanggan\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Modules/Pelanggan/app',
+        ),
+        'Modules\\Items\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Items/tests',
+        ),
+        'Modules\\Items\\Database\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Items/database/seeders',
+        ),
+        'Modules\\Items\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Items/database/factories',
+        ),
+        'Modules\\Items\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Items/app',
         ),
         'Modules\\Category\\Tests\\' => 
         array (
@@ -3560,6 +3580,13 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\Category\\Providers\\CategoryServiceProvider' => __DIR__ . '/../..' . '/Modules/Category/app/Providers/CategoryServiceProvider.php',
         'Modules\\Category\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/Category/app/Providers/EventServiceProvider.php',
         'Modules\\Category\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Category/app/Providers/RouteServiceProvider.php',
+        'Modules\\Items\\Database\\Seeders\\ItemsDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Items/database/seeders/ItemsDatabaseSeeder.php',
+        'Modules\\Items\\Http\\Controllers\\ApiItemsController' => __DIR__ . '/../..' . '/Modules/Items/app/Http/Controllers/ApiItemsController.php',
+        'Modules\\Items\\Http\\Controllers\\ItemsController' => __DIR__ . '/../..' . '/Modules/Items/app/Http/Controllers/ItemsController.php',
+        'Modules\\Items\\Models\\Items' => __DIR__ . '/../..' . '/Modules/Items/app/Models/Items.php',
+        'Modules\\Items\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/Items/app/Providers/EventServiceProvider.php',
+        'Modules\\Items\\Providers\\ItemsServiceProvider' => __DIR__ . '/../..' . '/Modules/Items/app/Providers/ItemsServiceProvider.php',
+        'Modules\\Items\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Items/app/Providers/RouteServiceProvider.php',
         'Modules\\Pelanggan\\Database\\Seeders\\PelangganDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Pelanggan/database/seeders/PelangganDatabaseSeeder.php',
         'Modules\\Pelanggan\\Http\\Controllers\\ApiPelangganController' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Http/Controllers/ApiPelangganController.php',
         'Modules\\Pelanggan\\Http\\Controllers\\PelangganController' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Http/Controllers/PelangganController.php',

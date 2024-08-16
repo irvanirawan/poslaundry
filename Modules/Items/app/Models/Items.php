@@ -1,36 +1,43 @@
 <?php
 
-namespace Modules\Category\Models;
+namespace Modules\Items\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Category\Database\Factories\CategoryFactory;
+use Modules\Items\Database\Factories\ItemsFactory;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 use App\Models\User;
+use Modules\Category\Models\Category;
 use Modules\CategoryGroup\Models\CategoryGroup;
 
-class Category extends Model
+class Items extends Model
 {
     use HasFactory, LogsActivity;
 
-    /**
-     * The attributes that are mass assignable.
-     */
     protected $fillable = [
         'kode',
         'nama',
         'status',
+        'kelompok_id',
+        'kategori_id',
+        'satuan',
+        'hargajual',
+        'hargamodal',
+        'stok',
+        'stokmin',
+        'stokmax',
+        'keterangan',
+        'gambar',
         'created_by',
         'updated_by',
-        'category_group_id',
     ];
     
-    protected $table = 'category';
-
-    protected static function newFactory(): CategoryFactory
+    protected $table = 'items';
+    
+    protected static function newFactory(): ItemsFactory
     {
-        //return CategoryFactory::new();
+        //return ItemsFactory::new();
     }
 
     public function getActivitylogOptions(): LogOptions
@@ -41,26 +48,26 @@ class Category extends Model
 
     public function getDescriptionForEvent(string $eventName): string
     {
-        $string = "Category {$this->kode} {$eventName}";
+        $string = "Items {$this->kode} {$eventName}";
         if ($eventName == 'created') {
-            $string = 'Category "' . $this->kode . '" telah dibuat';
+            $string = 'Items "' . $this->kode . '" telah dibuat';
         }
         if ($eventName == 'updated') {
-            $string = 'Category "' . $this->kode . '" telah diubah';
+            $string = 'Items "' . $this->kode . '" telah diubah';
         }
         if ($eventName == 'deleted') {
-            $string = 'Category "' . $this->kode . '" telah dihapus';
+            $string = 'Items "' . $this->kode . '" telah dihapus';
         }
         return $string;
     }
 
     protected static function booted()
     {
-        static::creating(function ($category) {
-            $category->created_by = auth()->id();
+        static::creating(function ($items) {
+            $items->created_by = auth()->id();
         });
-        static::updating(function ($category) {
-            $category->updated_by = auth()->id();
+        static::updating(function ($items) {
+            $items->updated_by = auth()->id();
         });
     }
 
@@ -74,13 +81,13 @@ class Category extends Model
         return $this->belongsTo(User::class, 'updated_by');
     }
 
-    public function categoryGroup()
+    public function category()
     {
-        return $this->belongsTo(CategoryGroup::class, 'category_group_id');
+        return $this->belongsTo(Category::class, 'kategori_id');
     }
 
-    public function items()
+    public function categoryGroup()
     {
-        return $this->hasMany(Item::class, 'category_id');
+        return $this->belongsTo(CategoryGroup::class, 'kelompok_id');
     }
 }

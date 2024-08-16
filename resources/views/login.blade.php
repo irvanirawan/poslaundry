@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login MPX Logistik</title>
+    <!-- FAVICONS ICON -->
+    <link rel="icon" type="image/png" sizes="16x16" href="https://kavelia.siskasoftware.com/files/img/logo/logo-mono.svg" />
+    <title>Point of Sale</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-100 flex items-center justify-center h-screen">
