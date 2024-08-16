@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Commands\\EditFileCommand' => $baseDir . '/app/Console/Commands/EditFileCommand.php',
+    'App\\Console\\Commands\\InstallApp' => $baseDir . '/app/Console/Commands/InstallApp.php',
     'App\\Http\\Controllers\\ApiAuthController' => $baseDir . '/app/Http/Controllers/ApiAuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Middleware\\WebAndApi' => $baseDir . '/app/Http/Middleware/WebAndApi.php',
@@ -2964,6 +2965,13 @@ return array(
     'Modules\\Pelanggan\\Providers\\EventServiceProvider' => $baseDir . '/Modules/Pelanggan/app/Providers/EventServiceProvider.php',
     'Modules\\Pelanggan\\Providers\\PelangganServiceProvider' => $baseDir . '/Modules/Pelanggan/app/Providers/PelangganServiceProvider.php',
     'Modules\\Pelanggan\\Providers\\RouteServiceProvider' => $baseDir . '/Modules/Pelanggan/app/Providers/RouteServiceProvider.php',
+    'Modules\\SetupApp\\Database\\Seeders\\SetupAppDatabaseSeeder' => $baseDir . '/Modules/SetupApp/database/seeders/SetupAppDatabaseSeeder.php',
+    'Modules\\SetupApp\\Http\\Controllers\\ApiSetupAppController' => $baseDir . '/Modules/SetupApp/app/Http/Controllers/ApiSetupAppController.php',
+    'Modules\\SetupApp\\Http\\Controllers\\SetupAppController' => $baseDir . '/Modules/SetupApp/app/Http/Controllers/SetupAppController.php',
+    'Modules\\SetupApp\\Models\\SetupApp' => $baseDir . '/Modules/SetupApp/app/Models/SetupApp.php',
+    'Modules\\SetupApp\\Providers\\EventServiceProvider' => $baseDir . '/Modules/SetupApp/app/Providers/EventServiceProvider.php',
+    'Modules\\SetupApp\\Providers\\RouteServiceProvider' => $baseDir . '/Modules/SetupApp/app/Providers/RouteServiceProvider.php',
+    'Modules\\SetupApp\\Providers\\SetupAppServiceProvider' => $baseDir . '/Modules/SetupApp/app/Providers/SetupAppServiceProvider.php',
     'Monolog\\Attribute\\AsMonologProcessor' => $vendorDir . '/monolog/monolog/src/Monolog/Attribute/AsMonologProcessor.php',
     'Monolog\\Attribute\\WithMonologChannel' => $vendorDir . '/monolog/monolog/src/Monolog/Attribute/WithMonologChannel.php',
     'Monolog\\DateTimeImmutable' => $vendorDir . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',

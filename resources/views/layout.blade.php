@@ -196,8 +196,7 @@
 								<span class="nav-text">Setup</span>
 							</a>
 							<ul aria-expanded="false">
-								<li><a href="#">Pajak</a></li>
-								<li><a href="#">Format Struk</a></li>
+								<li><a href="setupapp">Pajak & Format Struk</a></li>
 								<li><a href="#">Diskon Menu</a></li>
 							</ul>
 						</li>

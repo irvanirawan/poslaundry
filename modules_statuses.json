@@ -30,5 +30,6 @@
     "Pelanggan": true,
     "CategoryGroup": true,
     "Category": true,
-    "Items": true
+    "Items": true,
+    "SetupApp": true
 }

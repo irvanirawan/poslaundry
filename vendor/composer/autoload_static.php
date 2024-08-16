@@ -121,6 +121,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Modules\\SetupApp\\Tests\\' => 23,
+            'Modules\\SetupApp\\Database\\Seeders\\' => 34,
+            'Modules\\SetupApp\\Database\\Factories\\' => 36,
+            'Modules\\SetupApp\\' => 17,
             'Modules\\Pelanggan\\Tests\\' => 24,
             'Modules\\Pelanggan\\Database\\Seeders\\' => 35,
             'Modules\\Pelanggan\\Database\\Factories\\' => 37,
@@ -424,6 +428,22 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Modules\\SetupApp\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/SetupApp/tests',
+        ),
+        'Modules\\SetupApp\\Database\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/SetupApp/database/seeders',
+        ),
+        'Modules\\SetupApp\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/SetupApp/database/factories',
+        ),
+        'Modules\\SetupApp\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/SetupApp/app',
+        ),
         'Modules\\Pelanggan\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Modules/Pelanggan/tests',
@@ -637,6 +657,7 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
 
     public static $classMap = array (
         'App\\Console\\Commands\\EditFileCommand' => __DIR__ . '/../..' . '/app/Console/Commands/EditFileCommand.php',
+        'App\\Console\\Commands\\InstallApp' => __DIR__ . '/../..' . '/app/Console/Commands/InstallApp.php',
         'App\\Http\\Controllers\\ApiAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiAuthController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Middleware\\WebAndApi' => __DIR__ . '/../..' . '/app/Http/Middleware/WebAndApi.php',
@@ -3594,6 +3615,13 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\Pelanggan\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Providers/EventServiceProvider.php',
         'Modules\\Pelanggan\\Providers\\PelangganServiceProvider' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Providers/PelangganServiceProvider.php',
         'Modules\\Pelanggan\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Providers/RouteServiceProvider.php',
+        'Modules\\SetupApp\\Database\\Seeders\\SetupAppDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/SetupApp/database/seeders/SetupAppDatabaseSeeder.php',
+        'Modules\\SetupApp\\Http\\Controllers\\ApiSetupAppController' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Http/Controllers/ApiSetupAppController.php',
+        'Modules\\SetupApp\\Http\\Controllers\\SetupAppController' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Http/Controllers/SetupAppController.php',
+        'Modules\\SetupApp\\Models\\SetupApp' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Models/SetupApp.php',
+        'Modules\\SetupApp\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Providers/EventServiceProvider.php',
+        'Modules\\SetupApp\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Providers/RouteServiceProvider.php',
+        'Modules\\SetupApp\\Providers\\SetupAppServiceProvider' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Providers/SetupAppServiceProvider.php',
         'Monolog\\Attribute\\AsMonologProcessor' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Attribute/AsMonologProcessor.php',
         'Monolog\\Attribute\\WithMonologChannel' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/Attribute/WithMonologChannel.php',
         'Monolog\\DateTimeImmutable' => __DIR__ . '/..' . '/monolog/monolog/src/Monolog/DateTimeImmutable.php',

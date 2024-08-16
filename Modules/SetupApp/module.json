@@ -1,0 +1,11 @@
+{
+    "name": "SetupApp",
+    "alias": "setupapp",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SetupApp\\Providers\\SetupAppServiceProvider"
+    ],
+    "files": []
+}
