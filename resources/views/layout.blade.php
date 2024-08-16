@@ -29,7 +29,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<!-- FAVICONS ICON -->
-		<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png')}}" />
+		<link rel="icon" type="image/png" sizes="16x16" href="https://kavelia.siskasoftware.com/files/img/logo/logo-mono.svg" />
 
 		<!-- ICONS -->
 		<link rel="stylesheet" href="{{ asset('assets/icons/fontawesome/css/all.min.css')}}" />
@@ -175,7 +175,7 @@
                             <ul aria-expanded="false">
                                 <li><a href="pelanggan">Pelanggan</a></li>
                                 <li><a href="categorygroup">Kelompok Menu</a></li>
-                                <li><a href="#">Kategori Menu</a></li>
+                                <li><a href="category">Kategori Menu</a></li>
                                 <li><a href="#">Menu</a></li>
                             </ul>
                         </li>

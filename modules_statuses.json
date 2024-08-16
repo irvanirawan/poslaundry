@@ -28,5 +28,6 @@
     "ManagerTruck": true,
     "UserManagement": true,
     "Pelanggan": true,
-    "CategoryGroup": true
+    "CategoryGroup": true,
+    "Category": true
 }

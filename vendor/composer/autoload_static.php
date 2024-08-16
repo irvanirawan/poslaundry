@@ -125,6 +125,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
             'Modules\\Pelanggan\\Database\\Seeders\\' => 35,
             'Modules\\Pelanggan\\Database\\Factories\\' => 37,
             'Modules\\Pelanggan\\' => 18,
+            'Modules\\Category\\Tests\\' => 23,
+            'Modules\\Category\\Database\\Seeders\\' => 34,
+            'Modules\\Category\\Database\\Factories\\' => 36,
+            'Modules\\Category\\' => 17,
             'Modules\\CategoryGroup\\Tests\\' => 28,
             'Modules\\CategoryGroup\\Database\\Seeders\\' => 39,
             'Modules\\CategoryGroup\\Database\\Factories\\' => 41,
@@ -431,6 +435,22 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\Pelanggan\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Modules/Pelanggan/app',
+        ),
+        'Modules\\Category\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Category/tests',
+        ),
+        'Modules\\Category\\Database\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Category/database/seeders',
+        ),
+        'Modules\\Category\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Category/database/factories',
+        ),
+        'Modules\\Category\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Category/app',
         ),
         'Modules\\CategoryGroup\\Tests\\' => 
         array (
@@ -3533,6 +3553,13 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\CategoryGroup\\Providers\\CategoryGroupServiceProvider' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Providers/CategoryGroupServiceProvider.php',
         'Modules\\CategoryGroup\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Providers/EventServiceProvider.php',
         'Modules\\CategoryGroup\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/CategoryGroup/app/Providers/RouteServiceProvider.php',
+        'Modules\\Category\\Database\\Seeders\\CategoryDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Category/database/seeders/CategoryDatabaseSeeder.php',
+        'Modules\\Category\\Http\\Controllers\\ApiCategoryController' => __DIR__ . '/../..' . '/Modules/Category/app/Http/Controllers/ApiCategoryController.php',
+        'Modules\\Category\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/Modules/Category/app/Http/Controllers/CategoryController.php',
+        'Modules\\Category\\Models\\Category' => __DIR__ . '/../..' . '/Modules/Category/app/Models/Category.php',
+        'Modules\\Category\\Providers\\CategoryServiceProvider' => __DIR__ . '/../..' . '/Modules/Category/app/Providers/CategoryServiceProvider.php',
+        'Modules\\Category\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/Category/app/Providers/EventServiceProvider.php',
+        'Modules\\Category\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Category/app/Providers/RouteServiceProvider.php',
         'Modules\\Pelanggan\\Database\\Seeders\\PelangganDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Pelanggan/database/seeders/PelangganDatabaseSeeder.php',
         'Modules\\Pelanggan\\Http\\Controllers\\ApiPelangganController' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Http/Controllers/ApiPelangganController.php',
         'Modules\\Pelanggan\\Http\\Controllers\\PelangganController' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Http/Controllers/PelangganController.php',
