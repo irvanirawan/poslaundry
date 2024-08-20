@@ -125,6 +125,10 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
             'Modules\\SetupApp\\Database\\Seeders\\' => 34,
             'Modules\\SetupApp\\Database\\Factories\\' => 36,
             'Modules\\SetupApp\\' => 17,
+            'Modules\\Penjualan\\Tests\\' => 24,
+            'Modules\\Penjualan\\Database\\Seeders\\' => 35,
+            'Modules\\Penjualan\\Database\\Factories\\' => 37,
+            'Modules\\Penjualan\\' => 18,
             'Modules\\Pelanggan\\Tests\\' => 24,
             'Modules\\Pelanggan\\Database\\Seeders\\' => 35,
             'Modules\\Pelanggan\\Database\\Factories\\' => 37,
@@ -443,6 +447,22 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\SetupApp\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Modules/SetupApp/app',
+        ),
+        'Modules\\Penjualan\\Tests\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Penjualan/tests',
+        ),
+        'Modules\\Penjualan\\Database\\Seeders\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Penjualan/database/seeders',
+        ),
+        'Modules\\Penjualan\\Database\\Factories\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Penjualan/database/factories',
+        ),
+        'Modules\\Penjualan\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/Modules/Penjualan/app',
         ),
         'Modules\\Pelanggan\\Tests\\' => 
         array (
@@ -3615,6 +3635,13 @@ class ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423
         'Modules\\Pelanggan\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Providers/EventServiceProvider.php',
         'Modules\\Pelanggan\\Providers\\PelangganServiceProvider' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Providers/PelangganServiceProvider.php',
         'Modules\\Pelanggan\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Pelanggan/app/Providers/RouteServiceProvider.php',
+        'Modules\\Penjualan\\Database\\Seeders\\PenjualanDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/Penjualan/database/seeders/PenjualanDatabaseSeeder.php',
+        'Modules\\Penjualan\\Http\\Controllers\\ApiPenjualanController' => __DIR__ . '/../..' . '/Modules/Penjualan/app/Http/Controllers/ApiPenjualanController.php',
+        'Modules\\Penjualan\\Http\\Controllers\\PenjualanController' => __DIR__ . '/../..' . '/Modules/Penjualan/app/Http/Controllers/PenjualanController.php',
+        'Modules\\Penjualan\\Models\\Penjualan' => __DIR__ . '/../..' . '/Modules/Penjualan/app/Models/Penjualan.php',
+        'Modules\\Penjualan\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/Modules/Penjualan/app/Providers/EventServiceProvider.php',
+        'Modules\\Penjualan\\Providers\\PenjualanServiceProvider' => __DIR__ . '/../..' . '/Modules/Penjualan/app/Providers/PenjualanServiceProvider.php',
+        'Modules\\Penjualan\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Modules/Penjualan/app/Providers/RouteServiceProvider.php',
         'Modules\\SetupApp\\Database\\Seeders\\SetupAppDatabaseSeeder' => __DIR__ . '/../..' . '/Modules/SetupApp/database/seeders/SetupAppDatabaseSeeder.php',
         'Modules\\SetupApp\\Http\\Controllers\\ApiSetupAppController' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Http/Controllers/ApiSetupAppController.php',
         'Modules\\SetupApp\\Http\\Controllers\\SetupAppController' => __DIR__ . '/../..' . '/Modules/SetupApp/app/Http/Controllers/SetupAppController.php',

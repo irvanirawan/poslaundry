@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/penjualan",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Penjualan\\": "app/",
+            "Modules\\Penjualan\\Database\\Factories\\": "database/factories/",
+            "Modules\\Penjualan\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Penjualan\\Tests\\": "tests/"
+        }
+    }
+}

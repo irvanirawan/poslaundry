@@ -31,5 +31,6 @@
     "CategoryGroup": true,
     "Category": true,
     "Items": true,
-    "SetupApp": true
+    "SetupApp": true,
+    "Penjualan": true
 }

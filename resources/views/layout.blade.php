@@ -31,15 +31,6 @@
 		<!-- FAVICONS ICON -->
 		<link rel="icon" type="image/png" sizes="16x16" href="https://kavelia.siskasoftware.com/files/img/logo/logo-mono.svg" />
 
-		<!-- ICONS -->
-		<link rel="stylesheet" href="{{ asset('assets/icons/fontawesome/css/all.min.css')}}" />
-		<link rel="stylesheet" href="{{ asset('assets/icons/line-awesome/css/line-awesome.min.css')}}" />
-		<link rel="stylesheet" href="{{ asset('assets/icons/flaticon/flaticon.css')}}" />
-		<link rel="stylesheet" href="{{ asset('assets/icons/themify-icons/css/themify-icons.css')}}" />
-
-		<!-- NICE SELECT -->
-		<link href="{{ asset('assets/vendor/niceselect/css/nice-select.css')}}" rel="stylesheet" />
-
 		<!-- STYLE CSS. -->
 		<link href="{{ asset('assets/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 		<link href="{{ asset('assets/vendor/datatables/css/responsive.dataTables.min.css') }}" rel="stylesheet">
@@ -79,7 +70,7 @@
 		<div id="main-wrapper" class="relative">
 			<!-- Nav header start -->
 			<div class="nav-header">
-				<a href="index.html" class="brand-logo">
+				<a href="#" class="brand-logo">
 					<img class="logo-abbr" src="https://kavelia.siskasoftware.com/files/img/logo/logo-mono.svg" alt="" />
 					<img class="logo-compact" src="https://kavelia.siskasoftware.com/files/img/logo/logo-light.svg" alt="" />
 					<img class="brand-title" src="https://kavelia.siskasoftware.com/files/img/logo/logo-light.svg" alt="" />
@@ -185,7 +176,7 @@
 								<span class="nav-text">Transaksi</span>
 							</a>
 							<ul aria-expanded="false">
-								<li><a href="#">Penjualan</a></li>
+								<li><a href="penjualan">Penjualan</a></li>
 								<li><a href="#">Piutang Pelanggan</a></li>
 								<li><a href="#">Mutasi Kas</a></li>
 							</ul>
@@ -246,7 +237,7 @@
 			<div class="footer mt-4 text-[13px] font-normal bg-card">
 				<div class="copyright p-[0.9375rem]">
 					<p class="text-center text-[#918f8f] dark:text-white sm:text-sm text-xs leading-[1.8]">
-						Copyright © Designed & Developed by <a href="#" target="_blank" class="text-primary dark:hover:text-white">Software</a> 2024
+						Copyright © Developed by <a href="#" target="_blank" class="text-primary dark:hover:text-white">Software</a> 2024
 					</p>
 				</div>
 			</div>
