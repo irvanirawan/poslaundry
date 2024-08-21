@@ -1,1 +1,11 @@
-"use strict";var dzSettingsOptions={};function getUrlParams(t){for(var i,n=window.location.search.substring(1).split("&"),o=0;o<n.length;o++)if((i=n[o].split("="))[0]===t)return void 0===i[1]||decodeURIComponent(i[1])}!function(t){dzSettingsOptions={typography:"poppins",version:"light",layout:"vertical",primary:"color_1",headerBg:"color_1",navheaderBg:"color_1",sidebarBg:"color_1",sidebarStyle:"full",sidebarPosition:"fixed",headerPosition:"fixed",containerLayout:"full"},new dzSettings(dzSettingsOptions),jQuery(window).on("resize",function(){dzSettingsOptions.containerLayout=t("#container_layout").val(),new dzSettings(dzSettingsOptions)})}(jQuery);
+"use strict";var dzSettingsOptions={typography: "poppins",
+	version: "light",
+	layout: "vertical",
+	primary: "color_1",
+	headerBg: "color_1",
+	navheaderBg: "color_8",
+	sidebarBg: "color_1",
+	sidebarStyle: "full",
+	sidebarPosition: "fixed",
+	headerPosition: "fixed",
+	containerLayout: "full"};function getUrlParams(t){for(var i,n=window.location.search.substring(1).split("&"),o=0;o<n.length;o++)if((i=n[o].split("="))[0]===t)return void 0===i[1]||decodeURIComponent(i[1])}!function(t){dzSettingsOptions={typography:"poppins",version:"light",layout:"vertical",primary:"color_1",headerBg:"color_1",navheaderBg:"color_8",sidebarBg:"color_1",sidebarStyle:"full",sidebarPosition:"fixed",headerPosition:"fixed",containerLayout:"full"},new dzSettings(dzSettingsOptions),jQuery(window).on("resize",function(){dzSettingsOptions.containerLayout=t("#container_layout").val(),new dzSettings(dzSettingsOptions)})}(jQuery);
