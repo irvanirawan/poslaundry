@@ -165,9 +165,9 @@
                             </a>
                             <ul aria-expanded="false">
                                 <li><a href="pelanggan">Pelanggan</a></li>
-                                <li><a href="categorygroup">Kelompok Menu</a></li>
-                                <li><a href="category">Kategori Menu</a></li>
-                                <li><a href="items">Menu</a></li>
+                                <li><a href="categorygroup">Kelompok Jasa</a></li>
+                                <li><a href="category">Kategori Jasa</a></li>
+                                <li><a href="items">Jasa</a></li>
                             </ul>
                         </li>
 						<li>
