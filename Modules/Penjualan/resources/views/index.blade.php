@@ -331,7 +331,7 @@
 @endpush
 
 @section('content')
-<div class="grid grid-cols-12 xl:gap-[20px]">
+<div x-data="posApp()" class="grid grid-cols-12 xl:gap-[20px]">
     <div class="xl:col-span-8 col-span-12 xl:row-span-2">
         <div class="w-full">
             <div class="w-full md:w-2/3 pl-2" style="scrollbar-width: none;">
@@ -341,30 +341,24 @@
                 </div>
                 <div class="categories-container">
                     <div class="categories flex items-center gap-2 mb-4">
-                        <button class="category-btn selected">Cuci Kering</button>
-                        <button class="category-btn">Setrika</button>
-                        <button class="category-btn">Cuci dan Setrika</button>
-                        <button class="category-btn">Dry Cleaning</button>
-                        <button class="category-btn">Paket Hemat</button>
-                        <button class="category-btn">Laundry Khusus</button>
+                        <template x-for="category in categories" :key="category.id">
+                            <button @click="filterItemsByCategory(category.id)" :class="{ 'selected': selectedCategoryId === category.id }" class="category-btn">
+                                <span x-text="category.nama"></span>
+                            </button>
+                        </template>
                     </div>
                     <div class="scroll-indicator"></div>
                 </div>
                 <div class="grid grid-cols-2 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 overflow-y-auto max-h-screen" style="scrollbar-width: none;">
-                    <div class="product-card shadow-flat hover:shadow-flat-hover transition-shadow duration-200">
-                        <div class="h-24 flex items-center justify-center bg-blue-50 rounded mb-4">
-                            <i class="fas fa-tshirt text-blue-400 fa-3x"></i>
+                    <template x-for="item in filteredItems" :key="item.id">
+                        <div class="product-card shadow-flat hover:shadow-flat-hover transition-shadow duration-200" @click="addToCart(item)">
+                            <div class="h-24 flex items-center justify-center bg-blue-50 rounded mb-4">
+                                <img :src="`/path/to/images/${item.gambar}`" alt="" class="h-full object-contain">
+                            </div>
+                            <h2 class="text-lg font-bold" x-text="item.nama"></h2>
+                            <p class="font-semibold" x-text="`Rp. ${formatNumber(item.hargajual)}`"></p>
                         </div>
-                        <h2 class="text-lg font-bold">Cuci Kering</h2>
-                        <p class="font-semibold">Rp. 10.000/unit</p>
-                    </div>
-                    <div class="product-card shadow-flat hover:shadow-flat-hover transition-shadow duration-200">
-                        <div class="h-24 flex items-center justify-center bg-blue-50 rounded mb-4">
-                            <i class="fas fa-iron text-blue-400 fa-3x"></i>
-                        </div>
-                        <h2 class="text-lg font-bold">Setrika</h2>
-                        <p class="font-semibold">Rp. 5.000/unit</p>
-                    </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -377,73 +371,64 @@
                         <div class="cart-icons-container">
                             <div class="cart-icon">
                                 <i class="fas fa-shopping-cart"></i>
-                                <span class="cart-count align-super text-xs">3</span>
+                                <span class="cart-count align-super text-xs" x-text="cartItems.length"></span>
                             </div>
-                            <i class="fas fa-trash trash-icon"></i>
+                            <i class="fas fa-trash trash-icon" @click="clearCart()" x-show="cartItems.length > 0"></i>
                         </div>
                     </div>
+                    <template x-if="cartItems.length === 0">
+                        <div class="empty-cart flex flex-col items-center justify-center text-center py-10">
+                            <i class="fas fa-shopping-cart text-gray-400 fa-4x mb-4"></i>
+                            <h3 class="text-xl font-semibold text-gray-600">Keranjang Kosong</h3>
+                            <p class="text-gray-500">Tambahkan beberapa item ke dalam keranjang untuk memulai transaksi.</p>
+                        </div>
+                    </template>
                     <div class="cart-items-container">
-                        <!-- Contoh item di keranjang, ulangi sesuai kebutuhan -->
-                        <div class="cart-item">
-                            <div class="item-info">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 bg-blue-50 rounded mr-2 flex items-center justify-center">
-                                        <i class="fas fa-tshirt text-blue-400"></i>
+                        <template x-for="(cartItem, index) in cartItems" :key="index">
+                            <div class="cart-item">
+                                <div class="item-info">
+                                    <div class="flex items-center">
+                                        <div class="h-12 w-12 bg-blue-50 rounded mr-2 flex items-center justify-center">
+                                            <i class="fas fa-tshirt text-blue-400"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="font-bold">
+                                                <span x-text="cartItem.nama"></span>
+                                            </h3>
+                                            <p class="font-semibold">Rp. 
+                                                <span x-text="formatNumber(cartItem.hargajual)"></span>
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <h3 class="font-bold">Cuci Kering (3 unit)</h3>
-                                        <p class="font-semibold">Rp. 30.000</p>
+                                    <div class="flex items-center space-x-2 cart-controls">
+                                        <button class="hover:bg-gray-400 transition-colors" @click="decreaseQuantity(index)">
+                                            <i class="fas fa-minus text-gray-700"></i>
+                                        </button>
+                                        <span class="px-2">
+                                            <span x-text="cartItem.quantity"></span>
+                                        </span>
+                                        <button class="hover:bg-gray-400 transition-colors" @click="increaseQuantity(index)">
+                                            <i class="fas fa-plus text-gray-700"></i>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="flex items-center space-x-2 cart-controls">
-                                    <button class="hover:bg-gray-400 transition-colors">
-                                        <i class="fas fa-minus text-gray-700"></i>
-                                    </button>
-                                    <span class="px-2">3</span>
-                                    <button class="hover:bg-gray-400 transition-colors">
-                                        <i class="fas fa-plus text-gray-700"></i>
-                                    </button>
-                                </div>
+                                <input type="text" placeholder="Tambahkan catatan" class="item-note focus:outline-none focus:ring-2 focus:ring-blue-500" x-model="cartItem.note" />
                             </div>
-                            <input type="text" placeholder="Tambahkan catatan" class="item-note focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                        </div>
-                        <div class="cart-item">
-                            <div class="item-info">
-                                <div class="flex items-center">
-                                    <div class="h-12 w-12 bg-blue-50 rounded mr-2 flex items-center justify-center">
-                                        <i class="fas fa-tshirt text-blue-400"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-bold">Cuci Kering (3 unit)</h3>
-                                        <p class="font-semibold">Rp. 30.000</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-2 cart-controls">
-                                    <button class="hover:bg-gray-400 transition-colors">
-                                        <i class="fas fa-minus text-gray-700"></i>
-                                    </button>
-                                    <span class="px-2">3</span>
-                                    <button class="hover:bg-gray-400 transition-colors">
-                                        <i class="fas fa-plus text-gray-700"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <input type="text" placeholder="Tambahkan catatan" class="item-note focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                        </div>
+                        </template>
                     </div>
                 </div>
                 <div>
-                    <h2 class="total">Total: Rp. 30.000</h2>
+                <h2 class="total" x-text="`Total: Rp. ${totalAmount}`"></h2>
                     <div class="grid grid-cols-3 gap-2 mb-4 amount-buttons">
-                        <button>+ 2.000</button>
-                        <button>+ 5.000</button>
-                        <button>+ 10.000</button>
-                        <button>+ 20.000</button>
-                        <button>+ 50.000</button>
-                        <button>+ 100.000</button>
+                        <button @click="addPaymentAmount(2000)">+ 2.000</button>
+                        <button @click="addPaymentAmount(5000)">+ 5.000</button>
+                        <button @click="addPaymentAmount(10000)">+ 10.000</button>
+                        <button @click="addPaymentAmount(20000)">+ 20.000</button>
+                        <button @click="addPaymentAmount(50000)">+ 50.000</button>
+                        <button @click="addPaymentAmount(100000)">+ 100.000</button>
                     </div>
-                    <input type="text" placeholder="Rp" class="payment-input focus:outline-none focus:ring-2 focus:ring-blue-500" />
-                    <button class="submit-btn">SUBMIT</button>
+                    <input type="text" placeholder="Rp" class="payment-input focus:outline-none focus:ring-2 focus:ring-blue-500" x-model="paymentAmount" />
+                    <button class="submit-btn" @click="submitPayment()">SUBMIT</button>
                 </div>
             </div>
         </div>
@@ -453,5 +438,68 @@
 
 @push('scripts')
 <script>
+    function posApp() {
+        return {
+            searchQuery: '',
+            selectedCategoryId: null,
+            categories: @json($categories),
+            items: @json($items),
+            cartItems: [],
+            filteredItems: [],
+            paymentAmount: 0,
+
+            init() {
+                this.filteredItems = this.items;
+            },
+
+            formatNumber(value) {
+                return value.toLocaleString('id-ID'); // Format sesuai lokal Indonesia
+            },
+
+            filterItemsByCategory(categoryId) {
+                this.selectedCategoryId = categoryId;
+                this.filteredItems = this.items.filter(item => item.kategori_id === categoryId);
+            },
+
+            increaseQuantity(index) {
+                this.cartItems[index].quantity++;
+            },
+
+            decreaseQuantity(index) {
+                if (this.cartItems[index].quantity > 1) {
+                    this.cartItems[index].quantity--;
+                } else {
+                    this.cartItems.splice(index, 1);
+                }
+            },
+
+            addToCart(item) {
+                const existingItemIndex = this.cartItems.findIndex(cartItem => cartItem.id === item.id);
+                if (existingItemIndex !== -1) {
+                    this.cartItems[existingItemIndex].quantity++;
+                } else {
+                    this.cartItems.push({ ...item, quantity: 1, note: '' });
+                }
+            },
+
+            clearCart() {
+                this.cartItems = [];
+            },
+
+            addPaymentAmount(amount) {
+                this.paymentAmount += amount;
+            },
+
+            get totalAmount() {
+                return this.cartItems.reduce((total, item) => total + (item.hargajual * item.quantity), 0);
+            },
+
+            submitPayment() {
+                alert(`Pembayaran sebesar Rp. ${this.paymentAmount} telah diterima. Total belanja: Rp. ${this.totalAmount}`);
+                this.clearCart();
+                this.paymentAmount = 0;
+            }
+        }
+    }
 </script>
 @endpush

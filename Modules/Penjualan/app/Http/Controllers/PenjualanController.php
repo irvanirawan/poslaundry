@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Items\Models\Items;
+use Modules\Category\Models\Category;
 
 class PenjualanController extends Controller
 {
@@ -15,8 +16,9 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $products = Items::all();
-        return view('penjualan::index', compact('products'));
+        $items = Items::with(['category', 'categoryGroup'])->get();
+        $categories = Category::with('categoryGroup')->get();
+        return view('penjualan::index', compact('items', 'categories'));
     }
 
     /**
